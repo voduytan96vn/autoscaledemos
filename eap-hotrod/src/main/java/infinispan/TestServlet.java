@@ -70,7 +70,7 @@ public class TestServlet extends HttpServlet {
 	       cache.put(randomId, player);
 	       
           //set list in request scope and forward request to JSP
-            req.setAttribute("playerList",cache);         
+            req.setAttribute("playerList",cache.values());         
             String nextJSP = "/index.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             try {

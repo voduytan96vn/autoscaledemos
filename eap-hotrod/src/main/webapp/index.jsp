@@ -9,8 +9,9 @@
     <c:otherwise>
     
     <c:forEach var="entry" items="${playerList}">
-  Key: <c:out value="${entry.key}"/>
-  Value: <c:out value="${entry.value}"/>
+  Key: <c:out value="${entry.name}"/>
+  Value: <c:out value="${entry.surname}"/>
+    Team: <c:out value="${entry.teamName}"/>
   <br />
 </c:forEach>
         
