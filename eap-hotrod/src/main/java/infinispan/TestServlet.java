@@ -6,6 +6,7 @@ package infinispan;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
  
@@ -30,17 +31,19 @@ public class TestServlet extends HttpServlet {
 
   private RemoteCacheManager cacheManager;
   private RemoteCache<String, Object> cache;
-  
+ //private HashMap cache = new HashMap();
+ 
   @Override
   public void init() {
+ 
       ConfigurationBuilder builder = new ConfigurationBuilder();
       builder.addServer()
             .host(System.getenv("HOTROD_SERVICE"))
             .port(Integer.parseInt(System.getenv("HOTROD_SERVICE_PORT")));
       cacheManager = new RemoteCacheManager(builder.build());
       cache = cacheManager.getCache("default");
-      
-      System.out.println("Loaded Cache "+cache.getName());
+   
+      System.out.println("Loaded Cache "+cache);
   }
   protected void doGet(HttpServletRequest req, HttpServletResponse res) {
 	  doPost(req,res);
@@ -67,7 +70,7 @@ public class TestServlet extends HttpServlet {
 	       cache.put(randomId, player);
 	       
           //set list in request scope and forward request to JSP
-            req.setAttribute("playerList",list);         
+            req.setAttribute("playerList",cache);         
             String nextJSP = "/index.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             try {
@@ -81,6 +84,6 @@ public class TestServlet extends HttpServlet {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-      out.println("<h1>Called Servlet</h1>");
+      
   }
 }
