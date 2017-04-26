@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
  
@@ -56,7 +58,7 @@ public class TestServlet extends HttpServlet {
 	  String name = req.getParameter("name");
 	  String surname = req.getParameter("surname");
 	  String teamName = req.getParameter("teamname");
-	  
+	  List list = new ArrayList();
       // Actual logic goes here.
       PrintWriter out=null;
 	try {
@@ -69,8 +71,15 @@ public class TestServlet extends HttpServlet {
 		   String randomId = UUID.randomUUID().toString();
 	       cache.put(randomId, player);
 	       
+	       Set set = cache.entrySet();
+	       for (Object value: set) {
+	    	   list.add(value);
+	       }
+	       
+	       
+	       
           //set list in request scope and forward request to JSP
-            req.setAttribute("playerList",cache.values());         
+            req.setAttribute("playerList",list);         
             String nextJSP = "/index.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             try {
