@@ -71,7 +71,7 @@ public class TestServlet extends HttpServlet {
 		   player.setTeamName(teamName);
 		   String randomId = UUID.randomUUID().toString();
 	       cache.put(randomId, player);
-	       out.println("Added key "+randomId);
+	       out.println("Added Player: "+cache.get(randomId));
 	       /*
 	       Collection coll = cache.values();
 	       for (Object value: coll) {
