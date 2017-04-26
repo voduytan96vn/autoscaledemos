@@ -54,7 +54,7 @@ public class TestServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) {
     // Here the request is put in asynchronous mode
-	  response.setContentType("text/html");
+	  res.setContentType("text/html");
 
 	  String name = req.getParameter("name");
 	  String surname = req.getParameter("surname");
