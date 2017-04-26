@@ -6,6 +6,7 @@ package infinispan;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -71,8 +72,8 @@ public class TestServlet extends HttpServlet {
 		   String randomId = UUID.randomUUID().toString();
 	       cache.put(randomId, player);
 	       
-	       Set set = cache.entrySet();
-	       for (Object value: set) {
+	       Collection coll = cache.values();
+	       for (Object value: coll) {
 	    	   list.add(value);
 	       }
 	       
