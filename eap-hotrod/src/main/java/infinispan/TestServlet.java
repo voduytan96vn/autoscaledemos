@@ -54,7 +54,7 @@ public class TestServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) {
     // Here the request is put in asynchronous mode
-	//  response.setContentType("text/html");
+	  response.setContentType("text/html");
 
 	  String name = req.getParameter("name");
 	  String surname = req.getParameter("surname");
@@ -63,7 +63,7 @@ public class TestServlet extends HttpServlet {
       // Actual logic goes here.
       PrintWriter out=null;
 	try {
-		//out = res.getWriter();
+		 out = res.getWriter();
 		
 		   Player player = new Player();
 		   player.setName(name);
@@ -71,7 +71,8 @@ public class TestServlet extends HttpServlet {
 		   player.setTeamName(teamName);
 		   String randomId = UUID.randomUUID().toString();
 	       cache.put(randomId, player);
-	       
+	       out.println(cache);
+	       /*
 	       Collection coll = cache.values();
 	       for (Object value: coll) {
 	    	   list.add(value);
@@ -89,6 +90,7 @@ public class TestServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			*/
 	        
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
