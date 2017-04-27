@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.infinispan.context.Flag;
 import org.infinispan.client.hotrod.RemoteCache;
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
@@ -29,7 +28,6 @@ public class TestServlet extends HttpServlet {
 
 	private RemoteCacheManager cacheManager;
 	private RemoteCache<String, Object> cache;
-	// private HashMap cache = new HashMap();
 
 	@Override
 	public void init() {
@@ -55,7 +53,7 @@ public class TestServlet extends HttpServlet {
 		String name = req.getParameter("name");
 		String surname = req.getParameter("surname");
 		String teamName = req.getParameter("teamname");
-		List list = new ArrayList();
+
 		// Actual logic goes here.
 		PrintWriter out = null;
 		try {
@@ -70,23 +68,7 @@ public class TestServlet extends HttpServlet {
 			cache.put(randomId, player);
 
 			out.println("Added Player: " + cache.get(randomId));
-			out.println("with Key " + randomId);
-
-			Set<String> set = cache.keySet();
-			for (String key : set) {
-				list.add(key);
-			}
-
-			// set list in request scope and forward request to JSP
-			req.setAttribute("playerList", list);
-			String nextJSP = "/index.jsp";
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-			try {
-				dispatcher.forward(req, res);
-			} catch (ServletException e) {
-				e.printStackTrace();
-			}
-
+			 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
