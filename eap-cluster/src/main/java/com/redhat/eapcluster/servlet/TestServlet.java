@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.redhat.eapcluster.ejb.StatefulDemoEJB;
-import com.redhat.ejb.Service;
+import com.redhat.ejb.*;
 
 /**
  * Servlet implementation class TestServlet
