@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.redhat.eapcluster.ejb.StatefulDemoEJB;
+import com.redhat.ejb.Service;
 
 /**
  * Servlet implementation class TestServlet
@@ -18,7 +19,7 @@ import com.redhat.eapcluster.ejb.StatefulDemoEJB;
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@EJB StatefulDemoEJB ejb;
+	@EJB Service ejb;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,8 +34,8 @@ public class TestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ejb.add();
-		response.getWriter().println("Called EJB "+ ejb.getData());
+		
+		response.getWriter().println(ejb.exec("Frank"));
 	}
 
 	/**
