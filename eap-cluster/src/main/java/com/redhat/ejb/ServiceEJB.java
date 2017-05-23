@@ -10,17 +10,9 @@ public class ServiceEJB implements Service {
 	int total;
 
 	@Override
-	public String exec(String arg) {
-
-		return "Hello " + arg;
-
-	}
-
-	@Override
 	public int add() {
-
-		total++;
-		return total;
+		System.out.println("Running on node "+System.getProperty("jboss.node.name"));
+		return total++;
 
 	}
 
