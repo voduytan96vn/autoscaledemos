@@ -17,8 +17,8 @@ var mongoPass = process.env.MONGODB_PASSWORD;
 var mongoDb = process.env.MONGODB_DATABASE;
 
 //mysql configuration
-var mysqlHost = process.env.OPENSHIFT_MYSQL_DB_HOST || 'localhost';
-var mysqlPort = process.env.OPENSHIFT_MYSQL_DB_PORT || 3306;
+var mysqlHost = process.env.MYSQL_SERVICE_HOST || 'localhost';
+var mysqlPort = process.env.MYSQL_SERVICE_PORT || 3306;
 var mysqlUser = process.env.MYSQL_USER;
 var mysqlPass = process.env.MYSQL_PASSWORD;
 var mysqlDb = process.env.MYSQL_PASSWORD;
