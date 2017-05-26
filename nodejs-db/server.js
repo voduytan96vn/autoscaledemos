@@ -12,16 +12,16 @@ var ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 //mongodb configuration
 var mongoHost = process.env.MONGODB_SERVICE_HOST || 'localhost';
 var mongoPort = process.env.MONGODB_SERVICE_PORT || 27017;
-var mongoUser = process.env.MONGODB_SERVICE_USER;
-var mongoPass = process.env.MONGODB_SERVICE_PASSWORD;
-var mongoDb = process.env.MONGODB_SERVICE_DATABASE;
+var mongoUser = process.env.MONGODB_USER;
+var mongoPass = process.env.MONGODB_PASSWORD;
+var mongoDb = process.env.MONGODB_DATABASE;
 
 //mysql configuration
-var mysqlHost = process.env.OPENSHIFT_MYSQL_DB_HOST || 'localhost';
-var mysqlPort = process.env.OPENSHIFT_MYSQL_DB_PORT || 3306;
-var mysqlUser = ''; //mysql username
-var mysqlPass = ''; //mysql password
-var mysqlDb = ''; //mysql database name
+var mysqlHost = process.env.MYSQL_SERVICE_HOST || 'localhost';
+var mysqlPort = process.env.MYSQL_SERVICE_PORT || 3306;
+var mysqlUser = process.env.MYSQL_USER;
+var mysqlPass = process.env.MYSQL_PASSWORD;
+var mysqlDb = process.env.MYSQL_PASSWORD;
 
 //connection strings
 var mongoString = 'mongodb://' + mongoUser + ':' + mongoPass + '@' + mongoHost + ':' + mongoPort + '/' + mongoDb;
@@ -40,10 +40,10 @@ var mongodb = require('mongodb');
 
 
 //connect to mysql
-//var mysqlClient = mysql.createConnection(mysqlString);
-//mysqlClient.connect(function(err){
-//  if (err) console.log(err);
-//});
+var mysqlClient = mysql.createConnection(mysqlString);
+mysqlClient.connect(function(err){
+  if (err) console.log(err);
+});
 
 
 // app is running!
@@ -90,7 +90,7 @@ app.get('/mysql', function(req, res) {
 app.listen(8080, ip);
 
 console.log('MongoDB running at ' + mongoString);
-//console.log('MySQL running at mysql://[user:password]@' + mysqlHost + ':' + mysqlPort + '/nodejs');
+console.log('MySQL running at ' + mysqlString);
 
 
 module.exports = app;
