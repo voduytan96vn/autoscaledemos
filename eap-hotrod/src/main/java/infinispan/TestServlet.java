@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.infinispan.client.hotrod.RemoteCache;
-import org.infinispan.client.hotrod.RemoteCacheManager;
-import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
+//import org.infinispan.client.hotrod.RemoteCache;
+//import org.infinispan.client.hotrod.RemoteCacheManager;
+//import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
 
 @SuppressWarnings("serial")
 @WebServlet(value = "/test")
@@ -26,9 +26,9 @@ public class TestServlet extends HttpServlet {
 
 	ArrayList<Player> list = new ArrayList<Player>();
 
-	private RemoteCacheManager cacheManager;
-	private RemoteCache<String, Object> cache;
-
+//	private RemoteCacheManager cacheManager;
+//	private RemoteCache<String, Object> cache;
+/*
 	@Override
 	public void init() {
 
@@ -40,7 +40,7 @@ public class TestServlet extends HttpServlet {
 
 		System.out.println("Loaded Cache " + cache);
 	}
-
+        */
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) {
 		doPost(req, res);
 	}
@@ -64,10 +64,10 @@ public class TestServlet extends HttpServlet {
 			player.setSurname(surname);
 			player.setTeamName(teamName);
 			String randomId = UUID.randomUUID().toString();
+                        out.println("Added Player"); 
+			//cache.put(randomId, player);
 
-			cache.put(randomId, player);
-
-			out.println("Added Player: " + cache.get(randomId));
+			//out.println("Added Player: " + cache.get(randomId));
 			 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
