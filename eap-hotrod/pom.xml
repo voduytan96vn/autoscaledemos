@@ -47,7 +47,7 @@
                 <type>pom</type>
                 <scope>import</scope>
 </dependency>
-	    <!--
+	    
            <dependency>
                 <groupId>org.infinispan</groupId>
                 <artifactId>infinispan-bom</artifactId>
@@ -55,12 +55,12 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
--->
+ 
     </dependencies>
  </dependencyManagement>
 
     <dependencies>
-	    <!--
+	    
         <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-core</artifactId>
@@ -73,7 +73,7 @@
             <artifactId>infinispan-client-hotrod</artifactId>
         
         </dependency>
-        -->
+      
  
 
         <!-- Import the Common Annotations API (JSR-250), we use provided scope 
