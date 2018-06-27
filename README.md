@@ -1,2 +1,8 @@
-# ocpdemos
-Openshift demo applications
+wildfly-basic
+====================
+
+A sample distributable web application to be deployed on Openshift 
+
+
+ 
+
